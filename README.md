@@ -1,0 +1,1 @@
+### Сборка билда ---->[![Build status](https://ci.appveyor.com/api/projects/status/11hjbl5cf2n93ihm/branch/master?svg=true)](https://ci.appveyor.com/project/Akstel/netology-bdd/branch/master)
