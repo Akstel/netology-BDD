@@ -18,15 +18,17 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCode(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        int balanceOfFirstCardBefore = DashboardPage.getCurrentBalanceOfFirstCard();
-        int balanceOfSecondCardBefore = DashboardPage.getCurrentBalanceOfSecondCard();
+        val balanceOfFirstCardBefore = dashboardPage.getCurrentBalanceOfFirstCard();
+        val balanceOfSecondCardBefore = dashboardPage.getCurrentBalanceOfSecondCard();
         val transferPage = dashboardPage.secondCard();
         val cardInfo = DataHelper.getFirstCardInfo();
         transferPage.makeTransfer(amount, cardInfo);
-        int balanceAfterTransferFirstCard = DataHelper.balanceOfSecondCardAfterTransfer(balanceOfSecondCardBefore, amount);
-        int balanceAfterTransferSecondCard = DataHelper.balanceOfFirstCardAfterTransfer(balanceOfFirstCardBefore, amount);
-        int balanceOfFirstCardAfter = DashboardPage.getCurrentBalanceOfSecondCard();
-        int balanceOfSecondCardAfter = DashboardPage.getCurrentBalanceOfFirstCard();
+        val balanceAfterTransferFirstCard = DataHelper.balanceOfSecondCardAfterTransfer
+                (balanceOfSecondCardBefore, amount);
+        val balanceAfterTransferSecondCard = DataHelper.balanceOfFirstCardAfterTransfer
+                (balanceOfFirstCardBefore, amount);
+        val balanceOfFirstCardAfter = dashboardPage.getCurrentBalanceOfSecondCard();
+        val balanceOfSecondCardAfter = dashboardPage.getCurrentBalanceOfFirstCard();
         assertEquals(balanceAfterTransferFirstCard, balanceOfFirstCardAfter);
         assertEquals(balanceAfterTransferSecondCard, balanceOfSecondCardAfter);
     }
@@ -39,15 +41,17 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCode(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        int balanceOfFirstCardBefore = DashboardPage.getCurrentBalanceOfFirstCard();
-        int balanceOfSecondCardBefore = DashboardPage.getCurrentBalanceOfSecondCard();
+        val balanceOfFirstCardBefore = dashboardPage.getCurrentBalanceOfFirstCard();
+        val balanceOfSecondCardBefore = dashboardPage.getCurrentBalanceOfSecondCard();
         val transferPage = dashboardPage.firstCard();
         val cardInfo = DataHelper.getSecondCardInfo();
         transferPage.makeTransfer(amount, cardInfo);
-        int balanceAfterTransferFirstCard = DataHelper.balanceOfSecondCardAfterTransfer(balanceOfFirstCardBefore, amount);
-        int balanceAfterTransferSecondCard = DataHelper.balanceOfFirstCardAfterTransfer(balanceOfSecondCardBefore, amount);
-        int balanceOfFirstCardAfter = DashboardPage.getCurrentBalanceOfFirstCard();
-        int balanceOfSecondCardAfter = DashboardPage.getCurrentBalanceOfSecondCard();
+        val balanceAfterTransferFirstCard = DataHelper.balanceOfSecondCardAfterTransfer
+                (balanceOfFirstCardBefore, amount);
+        val balanceAfterTransferSecondCard = DataHelper.balanceOfFirstCardAfterTransfer
+                (balanceOfSecondCardBefore, amount);
+        val balanceOfFirstCardAfter = dashboardPage.getCurrentBalanceOfFirstCard();
+        val balanceOfSecondCardAfter = dashboardPage.getCurrentBalanceOfSecondCard();
         assertEquals(balanceAfterTransferFirstCard, balanceOfFirstCardAfter);
         assertEquals(balanceAfterTransferSecondCard, balanceOfSecondCardAfter);
     }
@@ -60,8 +64,6 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCode(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        DashboardPage.getCurrentBalanceOfFirstCard();
-        DashboardPage.getCurrentBalanceOfSecondCard();
         val transferPage = dashboardPage.firstCard();
         val cardInfo = DataHelper.getSecondCardInfo();
         transferPage.makeTransfer(amount, cardInfo);
